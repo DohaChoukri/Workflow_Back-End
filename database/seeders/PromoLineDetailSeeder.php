@@ -12,6 +12,6 @@ class PromoLineDetailSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Promo_Line_Detail::factory(15)->create();
     }
 }

@@ -12,6 +12,8 @@ class RolesSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Role::create(['name' => 'admin', 'guard_name' => 'web']);
+        \App\Models\Role::create(['name' => 'manager', 'guard_name' => 'web']);
+        \App\Models\Role::create(['name' => 'user', 'guard_name' => 'web']);
     }
 }

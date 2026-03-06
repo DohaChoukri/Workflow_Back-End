@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('promos', function (Blueprint $table) {
+        Schema::create('progresses', function (Blueprint $table) {
             $table->id();
-            $table->timestampTz('created_at')->nullable();
-            $table->timestampTz('updated_at')->nullable();
+            // code corresponds to the numeric stage (0,10,20,30,40,50)
+            $table->integer('code')->unique();
+            $table->string('label');
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('promos');
+        Schema::dropIfExists('progresses');
     }
 };

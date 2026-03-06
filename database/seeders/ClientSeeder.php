@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Client;
 
 class ClientSeeder extends Seeder
 {
@@ -12,6 +13,13 @@ class ClientSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Client::factory(10)->create();
+        // create a known client named 'Informatique'
+        Client::updateOrCreate(
+            ['nom' => 'Informatique'],
+            ['adresse' => 'Siège Informatique', 'email' => 'info@informatique.local', 'telephone' => '0000000000', 'actif' => true]
+        );
+
+        // create additional random clients
+        \App\Models\Client::factory()->count(5)->create();
     }
 }

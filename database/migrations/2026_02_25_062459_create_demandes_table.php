@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personnal_access_tokens', function (Blueprint $table) {
+        Schema::create('demandes', function (Blueprint $table) {
             $table->id();
-            $table->morphs('tokenable');
-            $table->text('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable()->index();
+            $table->integer('remise');
+            $table->date('date_debut');
+            $table->date('date_fin');
+            $table->text('motif')->nullable();
+            $table->enum('statut', ['brouillon', 'soumis', 'approuve', 'rejetée'])->default('brouillon');
             $table->timestampTz('created_at')->nullable();
             $table->timestampTz('updated_at')->nullable();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personnal_access_tokens');
+        Schema::dropIfExists('demandes');
     }
 };

@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('promo__line__details', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->timestampTz('created_at')->nullable();
-            $table->timestampTz('updated_at')->nullable();
+            $table->string('nom');
+            $table->string('adresse')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telephone')->nullable();
+            $table->boolean('actif')->default(true);
+            $table->timestamps();
         });
     }
 
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('promo__line__details');
+        Schema::dropIfExists('clients');
     }
 };

@@ -4,14 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Demande;
 
-class PromoSeeder extends Seeder
+class DemandeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        \App\Models\Promo::factory(5)->create();
+        Demande::factory()->count(10)->create();
     }
 }
